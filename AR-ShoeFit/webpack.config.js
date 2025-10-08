@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         include: [
-          path.resolve(__dirname, 'effects/'),
+          path.resolve(__dirname, 'public/effects/'),
         ],
         type: 'asset/resource',
       },
@@ -27,7 +27,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@effects': path.resolve(__dirname, 'effects/'),
+      '@effects': path.resolve(__dirname, 'public/effects/'),
     },
   },
   performance: {
@@ -45,6 +45,6 @@ module.exports = {
       },
     ],
     compress: true,
-    port: 9000,
+    port: 8888,
   },
 };

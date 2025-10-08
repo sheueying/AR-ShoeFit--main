@@ -4,9 +4,9 @@
   "description": "DeepAR shoe-try-on demo.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack --config webpack.config.js --mode production && cp -r public/* dist && cp -r node_modules/deepar dist/deepar-resources",
-    "dev": "webpack serve --mode development --open --port 8888",
-    "simple": "webpack serve --mode development --open --port 8888"
+    "build": "webpack --config webpack.config.js --mode production",
+    "postbuild": "node -e \"const fs=require('fs');const path=require('path');function copyDir(src,dest){fs.mkdirSync(dest,{recursive:true});fs.readdirSync(src,{withFileTypes:true}).forEach(entry=>{const srcPath=path.join(src,entry.name);const destPath=path.join(dest,entry.name);entry.isDirectory()?copyDir(srcPath,destPath):fs.copyFileSync(srcPath,destPath)})};copyDir('public','dist');copyDir('node_modules/deepar','dist/deepar-resources');\"",
+    "dev": "webpack serve --mode development --open --port 8888"
   },
   "author": "",
   "license": "MIT",
