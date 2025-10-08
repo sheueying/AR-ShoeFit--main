@@ -10,6 +10,9 @@ const selectedEffect = sessionStorage.getItem('selectedEffect');
 // If there's a selected effect, initialize DeepAR with that effect
 if (selectedEffect) {
   initializeDeepar(selectedEffect);
+} else {
+  // Initialize with default effect if no effect is selected
+  initializeDeepar('nike-dunk.deepar');
 }
 // So we wrap the whole code in an async function that is called immediatly.
 async function initializeDeepar(effectName) {
@@ -117,7 +120,3 @@ productCards.forEach(card => {
     onProductCardClick(cardId);
   });
 });
-// Auto-redirect to AR try-on page
-if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-  window.location.href = 'tryon.html';
-}
