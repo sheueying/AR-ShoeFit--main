@@ -23,6 +23,7 @@ async function initializeDeepar(effectName) {
     alert('Camera access requires HTTPS. Please use https://localhost:8888 or deploy to HTTPS.');
     return;
   }
+
   
   // Resize the canvas according to screen size. 
   const canvas = document.getElementById('deepar-canvas');
@@ -36,7 +37,7 @@ async function initializeDeepar(effectName) {
   try {
     // Initialize DeepAR with better error handling
     const deepAR = await deepar.initialize({
-      licenseKey: 'b98a37541a356069cc7150029aad9ab89a62df4bc7de8f1b82689dd30a2ea69f638a76bb72a8c257',
+      licenseKey: '68189330b90ae48f8e9001bc6084188710a4a12ead16d5b7a1fb30b40bff55fcc8b5dbe1b3846a36',
       canvas: canvas,
       effect: `effects/${effectName}`, // The selected effect file.
       additionalOptions: {
@@ -47,6 +48,7 @@ async function initializeDeepar(effectName) {
         hint: "footInit",
       }
     }); 
+    
     
     // Hide the loading screen.
     document.getElementById("loader-wrapper").style.display = "none";
