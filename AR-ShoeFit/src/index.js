@@ -37,7 +37,7 @@ async function initializeDeepar(effectName) {
   try {
     // Initialize DeepAR with better error handling
     const deepAR = await deepar.initialize({
-      licenseKey: '68189330b90ae48f8e9001bc6084188710a4a12ead16d5b7a1fb30b40bff55fcc8b5dbe1b3846a36',
+      licenseKey: 'd5aac5c0fe30b23483157b67ea81bb219f91d26c58dcfea67aa478b01e0d91eeb0f3c1b883caa5e4',
       canvas: canvas,
       effect: `effects/${effectName}`, // The selected effect file.
       additionalOptions: {
@@ -48,7 +48,7 @@ async function initializeDeepar(effectName) {
         hint: "footInit",
       }
     }); 
-    
+
     
     // Hide the loading screen.
     document.getElementById("loader-wrapper").style.display = "none";
