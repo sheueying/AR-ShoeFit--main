@@ -121,87 +121,6 @@
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
     }
-    
-    /* Product menu styling - positioned at bottom center */
-    .product-selector-header {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10000;
-      pointer-events: auto;
-    }
-    
-    .product-menu-btn-header {
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      border-radius: 25px;
-      background: rgba(102, 126, 234, 0.9);
-      backdrop-filter: blur(10px);
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .product-menu-btn-header:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      background: rgba(102, 126, 234, 0.95);
-    }
-    
-    .product-menu-btn-header i {
-      margin: 0 6px;
-    }
-    
-    .product-dropdown-header {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      z-index: 10000;
-      max-height: 300px;
-      overflow-y: auto;
-      display: none;
-      margin-bottom: 8px;
-      min-width: 280px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .product-dropdown-header.show {
-      display: block;
-      animation: slideUp 0.3s ease;
-    }
-    
-    .product-dropdown-header .product-item {
-      padding: 8px 12px;
-      font-size: 13px;
-    }
-    
-    .product-dropdown-header .product-item img {
-      width: 40px;
-      height: 40px;
-    }
-    
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-    }
   </style>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css' asp-append-version="true">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" asp-append-version="true" />
@@ -212,51 +131,9 @@
 <header>
   <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
       <div class="container-fluid">
+          <iconify-icon icon="ph:eye-light" width="30" height="30" style="margin-right: 10px;margin-left: 50px; "></iconify-icon>
+          <a class="navbar-brand" href="index.html">Perfect Match</a>
           <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-              <div class="product-selector-header">
-                  <button class="btn btn-primary product-menu-btn-header" id="productMenuBtnHeader">
-                      <i class="fas fa-shoe-prints"></i> Choose Shoe to Try On
-                      <i class="fas fa-chevron-down"></i>
-                  </button>
-                  <div class="product-dropdown-header" id="productDropdownHeader">
-                      <div class="product-item" data-effect="puma-suede-classic.deepar">
-                          <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649022/Shoes/403612345_908453864339411_9020397972855382698_n_eeydn1.jpg" alt="Puma Suede Classic">
-                          <span>Puma Suede Classic</span>
-                      </div>
-                      <div class="product-item" data-effect="puma-voltaire.deepar">
-                          <img src="https://a3.cdn.hhv.de/items/images/generated/475x475/00960/960187/1-puma-voltaire-og-pristine-dusty-tan.webp" alt="Puma Voltaire OG">
-                          <span>Puma Voltaire OG</span>
-                      </div>
-                      <div class="product-item" data-effect="on-run-cloudrock.deepar">
-                          <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649015/Shoes/386833737_1092258232205883_1676528638559606304_n_xo4iu5.jpg" alt="On Running Cloudrock">
-                          <span>On Running Cloudrock</span>
-                      </div>
-                      <div class="product-item" data-effect="on-run-cloudmonster.deepar">
-                          <img src="https://media.finishline.com/i/finishline/6198283_680_P1?$default$&w=671&&h=671&bg=rgb(237,237,237)" alt="On CloudMonster">
-                          <span>On CloudMonster</span>
-                      </div>
-                      <div class="product-item" data-effect="nike-dunk.deepar">
-                          <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649317/Shoes/403398657_384538924011762_4284071920092880444_n_ciszhk.jpg" alt="Nike Dunk Low">
-                          <span>Nike Dunk Low</span>
-                      </div>
-                      <div class="product-item" data-effect="nike-airforce1.deepar">
-                          <img src="https://lzd-img-global.slatic.net/g/p/b9655aae270f527efed0ec9ae9345e8d.jpg_720x720q80.jpg_.webp" alt="Nike Air Force 1">
-                          <span>Nike Air Force 1</span>
-                      </div>
-                      <div class="product-item" data-effect="nike-airforce-1-lv8.deepar">
-                          <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649009/Shoes/403406183_1728852937599073_6823355799884524089_n_ermnw2.jpg" alt="Nike Air Force 1 LV8">
-                          <span>Nike Air Force 1 LV8</span>
-                      </div>
-                      <div class="product-item" data-effect="new-balance-574.deepar">
-                          <img src="https://sneakerholicvietnam.vn/wp-content/uploads/2022/07/new-balance-574-navy-ml574en-768x768.jpg" alt="New Balance 574">
-                          <span>New Balance 574</span>
-                      </div>
-                      <div class="product-item" data-effect="nike-air-max.deepar">
-                          <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702648997/Shoes/403411700_1364677317495142_5520796353525316835_n_m5vxwv.jpg" alt="Nike Air Max">
-                          <span>Nike Air Max</span>
-                      </div>
-                  </div>
-              </div>
               <ul class="navbar-nav flex-grow-1">
               </ul>
           </div>
@@ -286,17 +163,65 @@
                     <option value="6">Sandals and Slides </option>
                 </select>
             </div>
+            <div class="product-menu-container" style="margin-top: 50px;">
+                <div class="container-fluid">
+                    <div class="product-selector">
+                        <button class="btn btn-primary product-menu-btn" id="productMenuBtn">
+                            <i class="fas fa-shoe-prints"></i> Choose Shoe to Try On
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="product-dropdown" id="productDropdown">
+                            <div class="product-item" data-effect="puma-suede-classic.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649022/Shoes/403612345_908453864339411_9020397972855382698_n_eeydn1.jpg" alt="Puma Suede Classic">
+                                <span>Puma Suede Classic</span>
+                            </div>
+                            <div class="product-item" data-effect="puma-voltaire.deepar">
+                                <img src="https://a3.cdn.hhv.de/items/images/generated/475x475/00960/960187/1-puma-voltaire-og-pristine-dusty-tan.webp" alt="Puma Voltaire OG">
+                                <span>Puma Voltaire OG</span>
+                            </div>
+                            <div class="product-item" data-effect="on-run-cloudrock.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649015/Shoes/386833737_1092258232205883_1676528638559606304_n_xo4iu5.jpg" alt="On Running Cloudrock">
+                                <span>On Running Cloudrock</span>
+                            </div>
+                            <div class="product-item" data-effect="on-run-cloudmonster.deepar">
+                                <img src="https://media.finishline.com/i/finishline/6198283_680_P1?$default$&w=671&&h=671&bg=rgb(237,237,237)" alt="On CloudMonster">
+                                <span>On CloudMonster</span>
+                            </div>
+                            <div class="product-item" data-effect="nike-dunk.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649317/Shoes/403398657_384538924011762_4284071920092880444_n_ciszhk.jpg" alt="Nike Dunk Low">
+                                <span>Nike Dunk Low</span>
+                            </div>
+                            <div class="product-item" data-effect="nike-airforce1.deepar">
+                                <img src="https://lzd-img-global.slatic.net/g/p/b9655aae270f527efed0ec9ae9345e8d.jpg_720x720q80.jpg_.webp" alt="Nike Air Force 1">
+                                <span>Nike Air Force 1</span>
+                            </div>
+                            <div class="product-item" data-effect="nike-airforce-1-lv8.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649009/Shoes/403406183_1728852937599073_6823355799884524089_n_ermnw2.jpg" alt="Nike Air Force 1 LV8">
+                                <span>Nike Air Force 1 LV8</span>
+                            </div>
+                            <div class="product-item" data-effect="new-balance-574.deepar">
+                                <img src="https://sneakerholicvietnam.vn/wp-content/uploads/2022/07/new-balance-574-navy-ml574en-768x768.jpg" alt="New Balance 574">
+                                <span>New Balance 574</span>
+                            </div>
+                            <div class="product-item" data-effect="nike-air-max.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702648997/Shoes/403411700_1364677317495142_5520796353525316835_n_m5vxwv.jpg" alt="Nike Air Max">
+                                <span>Nike Air Max</span>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
         </div>
     </div>    
   </div>
 
   <script type="text/javascript" src="main.js"></script>
   <script>
-    // Header product menu functionality
+    // Product menu functionality
     document.addEventListener('DOMContentLoaded', function() {
-      const menuBtn = document.getElementById('productMenuBtnHeader');
-      const dropdown = document.getElementById('productDropdownHeader');
-      const productItems = document.querySelectorAll('#productDropdownHeader .product-item');
+      const menuBtn = document.getElementById('productMenuBtn');
+      const dropdown = document.getElementById('productDropdown');
+      const productItems = document.querySelectorAll('.product-item');
       
       // Toggle dropdown menu
       menuBtn.addEventListener('click', function(e) {
