@@ -10,44 +10,116 @@
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="mycss.css">
   <style>
-    .product-card {
-      max-width: 140px;
-      margin: 0 auto;
-      padding: 8px;
+    .product-menu-container {
       display: flex;
-      flex-direction: column;
-      height: 180px;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
-    .product-card .card-img-top {
-      height: 120px;
+    
+    .product-selector {
+      position: relative;
+      display: inline-block;
       width: 100%;
+      max-width: 400px;
+    }
+    
+    .product-menu-btn {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .product-menu-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    .product-menu-btn i {
+      margin: 0 8px;
+    }
+    
+    .product-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      z-index: 1000;
+      max-height: 400px;
+      overflow-y: auto;
+      display: none;
+      margin-top: 8px;
+    }
+    
+    .product-dropdown.show {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .product-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .product-item:last-child {
+      border-bottom: none;
+    }
+    
+    .product-item:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .product-item img {
+      width: 50px;
+      height: 50px;
       object-fit: cover;
       border-radius: 8px;
+      margin-right: 12px;
     }
-    .img-span {
-      display: block;
-      height: 120px;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #f8f9fa;
-      margin-bottom: 8px;
+    
+    .product-item span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
     }
-    .row {
-      justify-content: center;
+    
+    .product-item:last-child {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
     }
-    .card-name {
-      font-size: 0.8rem;
-      text-align: center;
-      margin: 0;
-      padding: 4px;
-      line-height: 1.2;
-      height: 2.4em;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+    
+    .product-item:first-child {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
     }
   </style>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css' asp-append-version="true">
@@ -91,93 +163,49 @@
                     <option value="6">Sandals and Slides </option>
                 </select>
             </div>
-            <div class="list-product album" style="margin-top: 100px;">
+            <div class="product-menu-container" style="margin-top: 100px;">
                 <div class="container-fluid">
-                    <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 row-cols-lg-8 g-1">
-                        <div class="col" >
-                            <div class="product-card card" id="puma-suede-classic.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649022/Shoes/403612345_908453864339411_9020397972855382698_n_eeydn1.jpg" />
-                                </span>
-                                <p class="card-name">Puma Suede Classic</p>
+                    <div class="product-selector">
+                        <button class="btn btn-primary product-menu-btn" id="productMenuBtn">
+                            <i class="fas fa-shoe-prints"></i> Choose Shoe to Try On
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="product-dropdown" id="productDropdown">
+                            <div class="product-item" data-effect="puma-suede-classic.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649022/Shoes/403612345_908453864339411_9020397972855382698_n_eeydn1.jpg" alt="Puma Suede Classic">
+                                <span>Puma Suede Classic</span>
                             </div>
-                        </div>    
-                        <div class="col" >
-                            <div class="product-card card" id="puma-voltaire.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://a3.cdn.hhv.de/items/images/generated/475x475/00960/960187/1-puma-voltaire-og-pristine-dusty-tan.webp" />
-                                </span>
-                                <p class="card-name">Puma Voltaire OG</p>
+                            <div class="product-item" data-effect="puma-voltaire.deepar">
+                                <img src="https://a3.cdn.hhv.de/items/images/generated/475x475/00960/960187/1-puma-voltaire-og-pristine-dusty-tan.webp" alt="Puma Voltaire OG">
+                                <span>Puma Voltaire OG</span>
                             </div>
-                        </div>                    
-                        <div class="col" >
-                            <div class="product-card card" id="on-run-cloudrock.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649015/Shoes/386833737_1092258232205883_1676528638559606304_n_xo4iu5.jpg" />
-                                </span>
-                                <p class="card-name">On Running Cloudrock</p>
+                            <div class="product-item" data-effect="on-run-cloudrock.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649015/Shoes/386833737_1092258232205883_1676528638559606304_n_xo4iu5.jpg" alt="On Running Cloudrock">
+                                <span>On Running Cloudrock</span>
                             </div>
-                        </div>
-                        <div class="col" >
-                            <div class="product-card card" id="on-run-cloudmonster.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://media.finishline.com/i/finishline/6198283_680_P1?$default$&w=671&&h=671&bg=rgb(237,237,237)" />
-                                </span>
-                                <p class="card-name">On CloudMonster</p>
+                            <div class="product-item" data-effect="on-run-cloudmonster.deepar">
+                                <img src="https://media.finishline.com/i/finishline/6198283_680_P1?$default$&w=671&&h=671&bg=rgb(237,237,237)" alt="On CloudMonster">
+                                <span>On CloudMonster</span>
                             </div>
-                        </div>   
-                        <div class="col">
-                            <div class="product-card card" id="nike-dunk.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649317/Shoes/403398657_384538924011762_4284071920092880444_n_ciszhk.jpg" />
-                                </span>
-                                <p class="card-name">Nike Dunk Low</p>
+                            <div class="product-item" data-effect="nike-dunk.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649317/Shoes/403398657_384538924011762_4284071920092880444_n_ciszhk.jpg" alt="Nike Dunk Low">
+                                <span>Nike Dunk Low</span>
                             </div>
-                        </div> 
-                        <div class="col">
-                            <div class="product-card card" id="nike-airforce1.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://lzd-img-global.slatic.net/g/p/b9655aae270f527efed0ec9ae9345e8d.jpg_720x720q80.jpg_.webp" />
-                                </span>
-                                <p class="card-name">Nike Air Force 1</p>
+                            <div class="product-item" data-effect="nike-airforce1.deepar">
+                                <img src="https://lzd-img-global.slatic.net/g/p/b9655aae270f527efed0ec9ae9345e8d.jpg_720x720q80.jpg_.webp" alt="Nike Air Force 1">
+                                <span>Nike Air Force 1</span>
                             </div>
-                        </div>  
-                        <div class="col" >
-                            <div class="product-card card" id="nike-airforce-1-lv8.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649009/Shoes/403406183_1728852937599073_6823355799884524089_n_ermnw2.jpg" />
-                                </span>
-                                <p class="card-name">Nike Air Force 1 LV8</p>
+                            <div class="product-item" data-effect="nike-airforce-1-lv8.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702649009/Shoes/403406183_1728852937599073_6823355799884524089_n_ermnw2.jpg" alt="Nike Air Force 1 LV8">
+                                <span>Nike Air Force 1 LV8</span>
                             </div>
-                        </div>
-                        <div class="col" >
-                            <div class="product-card card" id="new-balance-574.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://sneakerholicvietnam.vn/wp-content/uploads/2022/07/new-balance-574-navy-ml574en-768x768.jpg" />
-                                </span>
-                                <p class="card-name">New Balance 574</p>
+                            <div class="product-item" data-effect="new-balance-574.deepar">
+                                <img src="https://sneakerholicvietnam.vn/wp-content/uploads/2022/07/new-balance-574-navy-ml574en-768x768.jpg" alt="New Balance 574">
+                                <span>New Balance 574</span>
                             </div>
-                        </div>
-                        <div class="col" >
-                            <div class="product-card card" id="nike-air-max.deepar">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702648997/Shoes/403411700_1364677317495142_5520796353525316835_n_m5vxwv.jpg" />
-                                </span>
-                                <p class="card-name">Nike Air Max</p>
-                            </div>
-                        </div>
-                        <div class="col" style="display: none;">
-                            <div class="product-card card" id="Shoe">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702648974/Shoes/403406760_734690218531711_5040748885208091266_n_ux9g6s.jpg" />
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col" style="display: none;">
-                            <div class="product-card card" id="Shoe_PBR">
-                                <span class="img-span">
-                                    <img class="card-img-top" src="https://imagedelivery.net/2DfovxNet9Syc-4xYpcsGg/1edf71c9-0f83-4120-31de-38faf7e8b900/product" />
-                                </span>
+                            <div class="product-item" data-effect="nike-air-max.deepar">
+                                <img src="https://res.cloudinary.com/do3n0jjlv/image/upload/v1702648997/Shoes/403411700_1364677317495142_5520796353525316835_n_m5vxwv.jpg" alt="Nike Air Max">
+                                <span>Nike Air Max</span>
                             </div>
                         </div>
                     </div> 
@@ -188,6 +216,62 @@
   </div>
 
   <script type="text/javascript" src="main.js"></script>
+  <script>
+    // Product menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('productMenuBtn');
+      const dropdown = document.getElementById('productDropdown');
+      const productItems = document.querySelectorAll('.product-item');
+      
+      // Toggle dropdown menu
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+        
+        // Rotate chevron icon
+        const chevron = menuBtn.querySelector('.fa-chevron-down');
+        if (dropdown.classList.contains('show')) {
+          chevron.style.transform = 'rotate(180deg)';
+        } else {
+          chevron.style.transform = 'rotate(0deg)';
+        }
+      });
+      
+      // Handle product selection
+      productItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const effectName = this.getAttribute('data-effect');
+          const productName = this.querySelector('span').textContent;
+          
+          // Update button text
+          menuBtn.innerHTML = `<i class="fas fa-shoe-prints"></i> ${productName} <i class="fas fa-chevron-down"></i>`;
+          
+          // Close dropdown
+          dropdown.classList.remove('show');
+          const chevron = menuBtn.querySelector('.fa-chevron-down');
+          chevron.style.transform = 'rotate(0deg)';
+          
+          // Trigger AR effect change
+          if (typeof onProductCardClick === 'function') {
+            onProductCardClick(effectName);
+          } else {
+            // Fallback: reload page with selected effect
+            sessionStorage.setItem('selectedEffect', effectName);
+            window.location.reload();
+          }
+        });
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.remove('show');
+          const chevron = menuBtn.querySelector('.fa-chevron-down');
+          chevron.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
