@@ -122,10 +122,10 @@
       border-top-right-radius: 12px;
     }
     
-    /* Header menu styling - positioned inside camera area */
+    /* Product menu styling - positioned at bottom center */
     .product-selector-header {
       position: fixed;
-      top: 10px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10000;
@@ -161,7 +161,7 @@
     
     .product-dropdown-header {
       position: absolute;
-      top: 100%;
+      bottom: 100%;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(255, 255, 255, 0.95);
@@ -172,14 +172,14 @@
       max-height: 300px;
       overflow-y: auto;
       display: none;
-      margin-top: 8px;
+      margin-bottom: 8px;
       min-width: 280px;
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .product-dropdown-header.show {
       display: block;
-      animation: slideDown 0.3s ease;
+      animation: slideUp 0.3s ease;
     }
     
     .product-dropdown-header .product-item {
@@ -190,6 +190,17 @@
     .product-dropdown-header .product-item img {
       width: 40px;
       height: 40px;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
     }
   </style>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css' asp-append-version="true">
