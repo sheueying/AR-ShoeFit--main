@@ -42,7 +42,7 @@ async function initializeDeepar(effectName) {
       effect: `effects/${effectName}`, // The selected effect file.
       additionalOptions: {
         cameraConfig: {
-          facingMode: "user", // Use the front camera for foot tracking.
+          facingMode: "environment", // Use the front camera for foot tracking.
           resolution: { width: 1280, height: 720 }
         },
         hint: "footInit",
